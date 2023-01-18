@@ -5,10 +5,11 @@ BLACK = ( 0, 0, 0)
 WHITE = ( 255, 255, 255)
 GREEN = ( 0, 255, 0)
 RED = ( 255, 0, 0)
-size = (100, 600)
+size = (400, 400)
 screen = pygame.display.set_mode(size)
 pygame.display.set_caption("My First PyGame!")
-
+x = 50
+y = 50
 # The loop will carry on until the user exits the game (e.g. clicks the close button).
 carryOn = True
  
@@ -19,21 +20,24 @@ clock = pygame.time.Clock()
 while carryOn:
     # --- Main event loop
     for event in pygame.event.get(): # User did something
-        if event.type == pygame.QUIT: # If user clicked close
-              carryOn = False # Flag that we are done so we can exit the while loop
- 
-     # --- Game logic should go here
- 
-     # --- Drawing code should go here
-     # First, clear the screen to white. 
-    screen.fill(WHITE)
-     #The you can draw different shapes and lines or add text to your background stage.
-    pygame.draw.rect(screen, RED, [55, 200, 100, 70],0)
-    pygame.draw.line(screen, GREEN, [0, 0], [100, 100], 5)
-    pygame.draw.ellipse(screen, BLACK, [20,20,250,100], 2)
- 
- 
-     # --- Go ahead and update the screen with what we've drawn.
+        
+        if event.type == pygame.QUIT:
+            carryOn = False
+            break
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_ESCAPE:
+                carryOn = False
+                break
+            elif event.key == pygame.K_RIGHT:
+                x += 8
+            elif event.key == pygame.K_LEFT:
+                x -= 8
+            elif event.key == pygame.K_DOWN:
+                y += 8
+            elif event.key == pygame.K_UP:
+                y -= 8
+    pygame.draw.rect(screen,(0,0,0),(0,0,1000,1000))
+    pygame.draw.rect(screen,(255,255,255),(x,y,20,25))
     pygame.display.flip()
      
      # --- Limit to 60 frames per second
