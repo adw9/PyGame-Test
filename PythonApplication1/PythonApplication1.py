@@ -5,11 +5,11 @@ BLACK = ( 0, 0, 0)
 WHITE = ( 255, 255, 255)
 GREEN = ( 0, 255, 0)
 RED = ( 255, 0, 0)
-size = (400, 400)
+size = (1000, 1000)
 screen = pygame.display.set_mode(size)
 pygame.display.set_caption("My First PyGame!")
-x = 50
-y = 50
+x = 500
+y = 500
 # The loop will carry on until the user exits the game (e.g. clicks the close button).
 carryOn = True
  
@@ -29,14 +29,18 @@ while carryOn:
                 carryOn = False
                 break
             elif event.key == pygame.K_RIGHT:
-                x += 8
+                x += 20
             elif event.key == pygame.K_LEFT:
-                x -= 8
+                x -= 20
             elif event.key == pygame.K_DOWN:
-                y += 8
+                y += 20
             elif event.key == pygame.K_UP:
-                y -= 8
+                y -= 20
+    
+    # Resets screen to black
     pygame.draw.rect(screen,(0,0,0),(0,0,1000,1000))
+    pygame.draw.circle(screen,(255,0,0),(700,500),20,0)  
+    # Draw user square 
     pygame.draw.rect(screen,(255,255,255),(x,y,20,25))
     pygame.display.flip()
      
