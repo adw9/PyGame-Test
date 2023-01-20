@@ -65,7 +65,7 @@ while carryOn:
     # Draw user square 
     pygame.draw.rect(screen,WHITE,(userX,userY,20,25))
 
-    pygame.display.set_caption(str(botY))
+
     pygame.display.flip()
      
      # --- Limit to 60 frames per second
