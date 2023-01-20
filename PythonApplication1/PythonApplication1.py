@@ -1,15 +1,23 @@
 import pygame
+import os
 pygame.init()
+os.environ['SDL_VIDEO_CENTERED'] = '1'
 
 BLACK = ( 0, 0, 0)
 WHITE = ( 255, 255, 255)
 GREEN = ( 0, 255, 0)
 RED = ( 255, 0, 0)
-size = (1000, 1000)
+size = (700, 500)
 screen = pygame.display.set_mode(size)
 pygame.display.set_caption("My First PyGame!")
-x = 500
-y = 500
+#vars to move square and circle
+userX = 350
+userY = 300
+botX = 400.0
+botY = 300.0
+botUp = False
+
+
 # The loop will carry on until the user exits the game (e.g. clicks the close button).
 carryOn = True
  
@@ -29,19 +37,30 @@ while carryOn:
                 carryOn = False
                 break
             elif event.key == pygame.K_RIGHT:
-                x += 20
+                userX += 20
             elif event.key == pygame.K_LEFT:
-                x -= 20
+                userX -= 20
             elif event.key == pygame.K_DOWN:
-                y += 20
+                userY += 20
             elif event.key == pygame.K_UP:
-                y -= 20
-    
+                userY -= 20
+    if(int(botY) > 400):
+        botUp = True
+    elif(int(botY) < 100):
+        botUp = False
+
+    if botUp == True:
+        botY -= 1
+    elif botUp == False:
+        botY += 1
     # Resets screen to black
     pygame.draw.rect(screen,(0,0,0),(0,0,1000,1000))
-    pygame.draw.circle(screen,(255,0,0),(700,500),20,0)  
+    #Enemy Circle
+    pygame.draw.circle(screen,(255,0,0),(botX,botY),20,0)  
     # Draw user square 
-    pygame.draw.rect(screen,(255,255,255),(x,y,20,25))
+    pygame.draw.rect(screen,(255,255,255),(userX,userY,20,25))
+
+    pygame.display.set_caption(str(botY))
     pygame.display.flip()
      
      # --- Limit to 60 frames per second
