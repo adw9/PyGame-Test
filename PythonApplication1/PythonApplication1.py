@@ -1,12 +1,14 @@
 import pygame
 import os
-pygame.init()
 os.environ['SDL_VIDEO_CENTERED'] = '1'
+pygame.init()
 
+#Color Constants
 BLACK = ( 0, 0, 0)
 WHITE = ( 255, 255, 255)
 GREEN = ( 0, 255, 0)
 RED = ( 255, 0, 0)
+
 size = (700, 500)
 screen = pygame.display.set_mode(size)
 pygame.display.set_caption("My First PyGame!")
@@ -57,11 +59,11 @@ while carryOn:
         botY += 1
 
     # Resets screen to black
-    pygame.draw.rect(screen,(0,0,0),(0,0,1000,1000))
+    pygame.draw.rect(screen,BLACK,(0,0,1000,1000))
     #Enemy Circle
-    pygame.draw.circle(screen,(255,0,0),(botX,botY),20,0)  
+    pygame.draw.circle(screen,RED,(botX,botY),20,0)  
     # Draw user square 
-    pygame.draw.rect(screen,(255,255,255),(userX,userY,20,25))
+    pygame.draw.rect(screen,WHITE,(userX,userY,20,25))
 
     pygame.display.set_caption(str(botY))
     pygame.display.flip()
