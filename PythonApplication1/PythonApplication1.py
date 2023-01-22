@@ -48,15 +48,15 @@ while carryOn:
                 userY -= 20
 
     #Determine if bot is near edge of screen, change direction
-    if(int(botY) > 400):
+    if(int(botY) > 500):
         botUp = True
-    elif(int(botY) < 100):
+    elif(int(botY) < 0):
         botUp = False
     #move Red Circle
     if botUp == True:
-        botY -= 1
+        botY -= 5
     elif botUp == False:
-        botY += 1
+        botY += 5
 
     # Resets screen to black
     pygame.draw.rect(screen,BLACK,(0,0,1000,1000))
